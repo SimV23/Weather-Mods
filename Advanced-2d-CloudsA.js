@@ -37,7 +37,6 @@ if (geofs.preferences.graphics.advancedAtmosphere == false && clouds == true) {
 	   geofs.fx.cloudManager.cloudCoverToCloudNumber = 75
    };
 };
-geofs.preferences.advancedClouds = clouds
 geofs.savePreferences();
 };
 cloudsInterval = setInterval(function(){runBetterClouds()},1000)
