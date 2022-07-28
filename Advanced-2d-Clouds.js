@@ -24,20 +24,19 @@ let toggleA = document.createElement("label");
     toggleA.innerHTML = '<input type="checkbox" id="advancedClouds" class="mdl-switch__input" data-gespref="geofs.advancedClouds.preference"><span class="mdl-switch__label">Advanced 2d Clouds</span>';
 elementSel.appendChild(toggleA);
 toggleA.addEventListener("click", geofs.advancedClouds.update);
-//geofs.preferences.graphics.volumetricClouds is always true for some reason
-//try .advancedAtmosphere
 function runBetterClouds() {
 if (geofs.preferences.graphics.advancedAtmosphere == false && clouds == true) {
    if (weather.definition.cloudCover <= 20) {
 	   geofs.fx.cloudManager.cloudCoverToCloudNumber = 5
 	};
-	if (weather.definition.cloudCover > 20 && weather.definition.cloudCover <= 35) {
-	   geofs.fx.cloudManager.cloudCoverToCloudNumber = 30
+	if (weather.definition.cloudCover > 20 && weather.definition.cloudCover <= 40) {
+	   geofs.fx.cloudManager.cloudCoverToCloudNumber = 25
 	};
-	if (weather.definition.cloudCover > 35) {
+	if (weather.definition.cloudCover > 40) {
 	   geofs.fx.cloudManager.cloudCoverToCloudNumber = 75
    };
-}
+};
+geofs.preferences.advancedClouds = clouds
 geofs.savePreferences();
 };
 cloudsInterval = setInterval(function(){runBetterClouds()},1000)
