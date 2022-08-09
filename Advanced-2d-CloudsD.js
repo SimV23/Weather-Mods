@@ -5,7 +5,7 @@
 
 function fixCloudsDensity() {
 geofs.advancedClouds = {};
-let clouds = geofs.preferences.advancedClouds;
+let clouds = true;
 geofs.advancedClouds.update = function() {
   if (clouds == true) {
     clouds = false;
@@ -25,12 +25,12 @@ let toggleA = document.createElement("label");
     toggleA.innerHTML = '<input type="checkbox" id="advancedClouds" class="mdl-switch__input" data-gespref="geofs.advancedClouds.preference"><span class="mdl-switch__label">Advanced 2d Clouds</span>';
 elementSel.appendChild(toggleA);
 toggleA.addEventListener("click", geofs.advancedClouds.update);
-function runBetterClouds() {
+function runBetter2dClouds() {
 if (geofs.preferences.graphics.advancedAtmosphere == false && clouds == true) {
-   if (weather.definition.cloudCover <= 20) {
+   if (weather.definition.cloudCover <= 25) {
 	   geofs.fx.cloudManager.cloudCoverToCloudNumber = 5
 	};
-	if (weather.definition.cloudCover > 20 && weather.definition.cloudCover <= 40) {
+	if (weather.definition.cloudCover > 25 && weather.definition.cloudCover <= 40) {
 	   geofs.fx.cloudManager.cloudCoverToCloudNumber = 25
 	};
 	if (weather.definition.cloudCover > 40) {
@@ -39,5 +39,5 @@ if (geofs.preferences.graphics.advancedAtmosphere == false && clouds == true) {
 };
 geofs.savePreferences();
 };
-cloudsInterval = setInterval(function(){runBetterClouds()},1000)
+cloudsInterval = setInterval(function(){runBetter2dClouds()},1000)
 }
